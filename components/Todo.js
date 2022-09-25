@@ -1,10 +1,18 @@
+import { useState } from "react";
+
 const Todo = ({ todo, todoRemoval, changeStatus, mode, index, changeIndexOnDrag }) => {
+    const [isDragging, setIsDragging] = useState(false);
+
     const handleDragStart = e => {
+        setIsDragging(true);
         const data = JSON.stringify({ type: todo, index: index });
         e.dataTransfer.setData("text/plain", data);
     };
 
-    const handleDragEnd = e => e.dataTransfer.clearData();
+    const handleDragEnd = e => {
+        setIsDragging(false);
+        e.dataTransfer.clearData()
+    };
 
     const handleDragOver = e => {
         if (e.dataTransfer.types[0] === "text/plain") e.preventDefault();
@@ -23,13 +31,13 @@ const Todo = ({ todo, todoRemoval, changeStatus, mode, index, changeIndexOnDrag 
     };
 
     return (
-        <div className={`${!mode ? 'bg-dark_blue2' : 'bg-[#fff]'} w-[90%] md:w-[55%] flex justify-center items-center  first:rounded-t-md h-14 border-b ${mode ? 'border-light_gray1' : 'border-dark_gray3'}  last:border-none shadow-xl`} draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd} onDragOver={handleDragOver} onDrop={handleDrop}>
+        <div className={`${!mode ? `${!isDragging ? 'bg-dark_blue2' : 'bg-dark_blue2_drag'}` : `${isDragging ? 'bg-light_gray' : 'bg-[#fff]'}`} w-[90%] md:w-[55%] flex justify-center items-center  first:rounded-t-md h-14 border-b ${mode ? 'border-light_gray1' : 'border-dark_gray3'}  last:border-none shadow-xl`} draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd} onDragOver={handleDragOver} onDrop={handleDrop}>
             <div className={`w-5 h-5 rounded-full cursor-pointer translate-x-3 z-50 flex items-center justify-center ${todo.done ? `bg-gradient-to-br from-light_blue to-light_pink border ${mode ? 'border-[#fff]' : 'border-dark_blue2'}` : 'border border-light_gray2 hover:'}`} onClick={(e) => changeStatus(todo)}>
                 <svg className={`${todo.done ? 'block m-1' : 'hidden'}`} xmlns="http://www.w3.org/2000/svg" width={11} height={9}>
                     <path fill="none" stroke="#FFF" strokeWidth={2} d="M1 4.304L3.696 7l6-6" />
                 </svg>
             </div>
-            <div className={`flex justify-between items-center rounded-md w-11/12 lg:w-full cursor-pointer px-5 josefin placeholder:josefin placeholder:text-xs bg-white focus:outline-none text-xs ${todo.done ? 'line-through text-light_gray2 ' : `${!mode ? 'text-dark_gray1' : 'text-dark_blue2'}`}`}>
+            <div className={`flex justify-between items-center rounded-md w-11/12 lg:w-full cursor-pointer px-5 josefin bg-white focus:outline-none text-xs md:text-base lg:text-lg ${todo.done ? 'line-through text-light_gray2 ' : `${!mode ? 'text-dark_gray1' : 'text-dark_blue2'}`}`}>
                 {todo.task}
                 <svg className="scale-75 cursor-pointer z-50" onClick={() => todoRemoval(todo)} xmlns="http://www.w3.org/2000/svg" width="20" height="20">
                     <path
@@ -39,8 +47,7 @@ const Todo = ({ todo, todoRemoval, changeStatus, mode, index, changeIndexOnDrag 
                     ></path>
                 </svg>
             </div>
-        </div>
-    )
+        </div>)
 }
 
 export default Todo

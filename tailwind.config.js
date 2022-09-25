@@ -16,6 +16,7 @@ module.exports = {
       "light_gray2_hover": "hsl(235, 19%, 35%)",
       "dark_blue": "hsl(235, 21%, 11%)",
       "dark_blue2": "hsl(235, 24%, 19%)",
+      "dark_blue2_drag": "hsla(235, 25%, 19%, 0.7)",
       "dark_gray1": "hsl(234, 39%, 85%)",
       "dark_gray1_hover": "hsl(236, 33%, 92%)",
       "dark_gray2": "hsl(234, 11%, 52%)",

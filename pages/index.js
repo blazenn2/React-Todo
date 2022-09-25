@@ -6,7 +6,7 @@ import { useState } from 'react';
 export default function Home() {
   const [isLightMode, setIsLightMode] = useState(true);
   return (
-    <div className={`${!isLightMode && 'bg-dark_blue'} h-screen`}>
+    <div className={`${!isLightMode ? 'bg-dark_blue' : null} h-screen`}>
       <Head>
         <title>Todo App</title>
         <meta name="description" content="A todo application" />

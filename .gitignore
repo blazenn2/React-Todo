@@ -56,3 +56,5 @@ next-env.d.ts
 
 # Todo app files
 /todo-app-main/
+
+end-points.md
