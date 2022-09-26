@@ -2,10 +2,13 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import TodoList from '../components/TodoList'
 import Profile from '../components/profile'
+import Setting from '../components/settings'
 import { useState } from 'react';
 
 export default function Home() {
   const [isLightMode, setIsLightMode] = useState(true);
+  const [showCredentials, setShowCredentials] = useState(true);
+
   return (
     <div className={`${!isLightMode ? 'bg-dark_blue' : null} h-screen relative`}>
       <Head>
@@ -17,6 +20,7 @@ export default function Home() {
       <Profile />
       <Header mode={isLightMode} changeMode={setIsLightMode} />
       <TodoList mode={isLightMode} />
+      {showCredentials ? (<Setting />) : null}
     </div>
   )
 }
