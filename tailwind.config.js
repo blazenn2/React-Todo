@@ -30,6 +30,7 @@ module.exports = {
         "mobile-l": "url('/bg-mobile-light.jpg')",
         "desktop-d": "url('/bg-desktop-dark.jpg')",
         "desktop-l": "url('/bg-desktop-light.jpg')",
+        "profile" : "url('/logo.png')",
       }
     },
   },

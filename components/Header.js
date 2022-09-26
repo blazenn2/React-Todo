@@ -1,7 +1,7 @@
 const Header = ({ mode, changeMode }) => {
     return (
-        <div className={`h-[200px] ${mode ? 'bg-mobile-l' : 'bg-mobile-d'} bg-cover md:flex md:justify-center ${mode ? 'md:bg-desktop-l' : 'md:bg-desktop-d'} md:h-[250px] lg:h-[250px]`}>
-            <div className="h-[40%] flex items-end justify-between md:w-1/2 lg:w-2/5 pb-2 px-6">
+        <div className={`h-[230px] ${mode ? 'bg-mobile-l' : 'bg-mobile-d'} bg-cover md:flex md:justify-center ${mode ? 'md:bg-desktop-l' : 'md:bg-desktop-d'} md:h-[250px] lg:h-[250px]`}>
+            <div className="h-[45%] flex items-end justify-between md:w-1/2 lg:w-2/5 pb-2 px-6">
                 <h1 className="text-light_gray font-bold text-2xl md:text-3xl lg:text-5xl tracking-[0.75rem] md:tracking-[1.25rem] lg:tracking-[1.75rem]">TODO</h1>
                 <svg xmlns="http://www.w3.org/2000/svg" onClick={() => changeMode(!mode)} className={`${mode ? "cursor-pointer" : "hidden"} md:scale-125 lg:scale-150 md:mb-1 lg:mb-4`} width="26" height="26">
                     <path
