@@ -7,7 +7,8 @@ import { useState } from 'react';
 
 export default function Home() {
   const [isLightMode, setIsLightMode] = useState(true);
-  const [showCredentials, setShowCredentials] = useState(true);
+  const [showCredentials, setShowCredentials] = useState(false);
+  
 
   return (
     <div className={`${!isLightMode ? 'bg-dark_blue' : null} h-screen relative`}>
@@ -17,10 +18,10 @@ export default function Home() {
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
 
-      <Profile />
+      <Profile setCredentials={setShowCredentials} mode={isLightMode} />
       <Header mode={isLightMode} changeMode={setIsLightMode} />
       <TodoList mode={isLightMode} />
-      {showCredentials ? (<Setting />) : null}
+      {showCredentials ? (<Setting setCredentials={setShowCredentials}  mode={isLightMode} />) : null}
     </div>
   )
 }
