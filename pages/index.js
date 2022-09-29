@@ -4,8 +4,11 @@ import TodoList from '../components/TodoList'
 import Profile from '../components/profile'
 import Setting from '../components/settings'
 import { useState } from 'react';
+import { useNodeContext } from '../context/nodes/NodeContext'
 
 export default function Home() {
+  const ctx = useNodeContext();
+
   const [isLightMode, setIsLightMode] = useState(true);
   const [showCredentials, setShowCredentials] = useState(false);
   
@@ -21,7 +24,7 @@ export default function Home() {
       <Profile setCredentials={setShowCredentials} mode={isLightMode} />
       <Header mode={isLightMode} changeMode={setIsLightMode} />
       <TodoList mode={isLightMode} />
-      {showCredentials ? (<Setting setCredentials={setShowCredentials}  mode={isLightMode} />) : null}
+      {showCredentials ? (<Setting setCredentials={setShowCredentials} mode={isLightMode} />) : null}
     </div>
   )
 }
