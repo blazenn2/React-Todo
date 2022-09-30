@@ -9,6 +9,8 @@ module.exports = {
       "bright_blue": "hsl(220, 98%, 61%)",
       "light_blue": "hsl(192, 100%, 67%)",
       "light_pink": "hsl(280, 87%, 65%)",
+      "light_pink_hover": "hsl(285, 87%, 65%)",
+      "light_pink_active": "hsl(295, 87%, 65%)",
       "light_gray": "hsl(0, 0%, 98%)",
       "light_gray1": "hsl(236, 33%, 92%)",
       "light_gray1_hover": "hsl(233, 11%, 84%)",
