@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import React, { useState, useRef } from 'react'
 import { useNodeContext } from '../context/nodes/NodeContext'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import Router from 'next/router'
+import Router from 'next/router';
+import { notifyError, notifySuccess } from '../util/toastify';
 
 const login = () => {
     const ctx = useNodeContext();
@@ -28,8 +29,10 @@ const login = () => {
                 }).then(res => {
                     setIsLoading(false);
                     notifySuccess(res.message);
-                    // console.log(res.data.name);
-                    ctx.login.loginHandler(res.data.token, res.data.name);
+                    ctx.login.loginHandler(res.data.token, res.data.name, res.data.userId);
+                    ctx.setLoginstatus.setIsLogin(true);
+                    // localStorage.setItem("light-mode", res.data.lightMode)
+                    ctx.setMode.setIsLightMode(res.data.lightMode);
                     Router.push("/")
                     console.log(res);
                 }).catch(err => {
@@ -62,26 +65,6 @@ const login = () => {
             } else notifyError("Sign up is incomplete")
         }
     };
-
-    const notifyError = errorMsg => toast.error(errorMsg, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-    });
-
-    const notifySuccess = successMsg => toast.success(successMsg, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-    });
 
     return (
         <>
