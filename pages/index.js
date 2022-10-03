@@ -23,7 +23,7 @@ export default function Home() {
       }).then(res => {
         if (!res.data?.isAuth) Router.push("/login");
         else {
-          console.log(res.data);
+          // console.log(res.data);
           ctx.setAuth.setIsAuthenticated(true);
           ctx.setUserName.setUserName(res.data.name);
           ctx.setUserId.setUserId(res.data.userd);
@@ -34,8 +34,6 @@ export default function Home() {
       })
     } else {
       if (ctx.auth !== true) Router.push("/login");
-      setIsLightMode(localStorage.getItem("light-mode"));
-      localStorage.removeItem("light-mode");
     }
     setIsLoading(true);
     axios.post('https://todo-sv.vercel.app/todo/get-todos', {}, {
@@ -58,7 +56,6 @@ export default function Home() {
         "Authorization": `Bearer ${localStorage.getItem("token")}`
       }
     }).then(res => {
-      console.log(res);
       ctx.setMode.changeMode();
     }).catch(err => {
       console.error(err);

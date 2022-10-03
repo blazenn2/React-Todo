@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import React, { useState, useRef } from 'react'
-import { useNodeContext } from '../context/nodes/NodeContext'
+import { useNodeContext } from '../../context/nodes/NodeContext'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Router from 'next/router';
-import { notifyError, notifySuccess } from '../util/toastify';
+import { notifyError, notifySuccess } from '../../util/toastify';
 
 const Login = () => {
     const ctx = useNodeContext();
@@ -32,7 +32,7 @@ const Login = () => {
                     ctx.login.loginHandler(res.data.token, res.data.name, res.data.userId);
                     ctx.setLoginstatus.setIsLogin(true);
                     // localStorage.setItem("light-mode", res.data.lightMode)
-                    ctx.setMode.setIsLightMode(res.data.lightMode);
+                    ctx.changeMode.setIsLightMode(res.data.lightMode);
                     Router.push("/")
                     console.log(res);
                 }).catch(err => {
