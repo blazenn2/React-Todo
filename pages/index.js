@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import TodoList from '../components/TodoList'
-import Profile from '../components/profile'
-import Setting from '../components/settings'
+import Profile from '../components/Profile'
+import Setting from '../components/Settings'
 import { useEffect, useState } from 'react';
 import { useNodeContext } from '../context/nodes/NodeContext'
 import Router from 'next/router'

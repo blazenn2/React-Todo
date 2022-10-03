@@ -7,7 +7,7 @@ import axios from 'axios';
 import Router from 'next/router';
 import { notifyError, notifySuccess } from '../util/toastify';
 
-const login = () => {
+const Login = () => {
     const ctx = useNodeContext();
     const [isLogin, setIsLogin] = useState(1);
 
@@ -137,4 +137,4 @@ const login = () => {
     )
 }
 
-export default login
+export default Login

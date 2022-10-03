@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { notifySuccess } from "../util/toastify.js";
 import Router from 'next/router'
 
-const profile = ({ setCredentials, user }) => {
+const Profile = ({ setCredentials, user }) => {
     const ctx = useNodeContext();
     const mode = ctx.mode;
     const [showSetting, setShowSetting] = useState(false);
@@ -31,4 +31,4 @@ const profile = ({ setCredentials, user }) => {
     )
 }
 
-export default profile
+export default Profile

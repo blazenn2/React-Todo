@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNodeContext } from "../context/nodes/NodeContext";
 
 
-const settings = ({ setCredentials }) => {
+const Settings = ({ setCredentials }) => {
     const ctx = useNodeContext();
     const mode = ctx.mode;
     const [isLoading, setIsLoading] = useState(false);
@@ -91,4 +91,4 @@ const settings = ({ setCredentials }) => {
     )
 }
 
-export default settings
+export default Settings
